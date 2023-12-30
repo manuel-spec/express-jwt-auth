@@ -10,8 +10,10 @@ const userSchema = mongoose.Schema({
     password: {
         type: String,
         required: [true, 'password is required'],
-        minLength: [6, 'minimum password length is 6']
+        minlength: [6, 'minimum password length is 6']
     }
 }, { timestamps: true })
 
 const User = mongoose.model('User', userSchema)
+
+module.exports = User

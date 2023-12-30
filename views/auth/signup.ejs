@@ -1,5 +1,24 @@
 <%- include('../partials/header') %>
 
-<h1>SignUp</h1>
+<form action="" method="post">
+  <h2>Sign up</h2>
+  <div>
+    <% for (const key in errors["errors"]) {
+      console.log(errors)
+      if (Object.hasOwnProperty.call(errors["errors"], key)) { %>
+        <div>
+          <%= errors["errors"][key]["msg"]; %>
+        </div>
+        
+     <% }} %>
+  </div>
+  <label for="email">Email</label>
+  <input type="text" name="email"  />
+  <div class="email error"></div>
+  <label for="password">Password</label>
+  <input type="password" name="password"  />
+  <div class="password error"></div>
+  <button type="submit" >Sign up</button>
+</form>
 
 <%- include('../partials/footer') %>
