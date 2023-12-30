@@ -4,6 +4,8 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var mongoose = require("mongoose")
+var cookieParser = require("cookie-parser")
+
 require('dotenv').config()
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -20,6 +22,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(cookieParser())
 
 const uri = "mongodb+srv://" + process.env.DB_USER + ":" + process.env.DB_PASSWORD + "@cluster0.dtbumxa.mongodb.net/" + process.env.DB_NAME
 mongoose.connect(uri).then((result) => console.log("DATABASE CONNECTION ESTABLISHED !"))
@@ -43,5 +46,7 @@ app.use(function (err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+
 
 module.exports = app;
